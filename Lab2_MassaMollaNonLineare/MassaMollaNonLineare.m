@@ -2,6 +2,8 @@ clear
 clc
 close all
 
+%% 1+massamollalineare
+%parametri per il modello MassaMollaLineare.slxc
 M = 1.0;
 k = 0.33;
 h = 1.1;
@@ -12,5 +14,3 @@ C = [1 0];
 D = 0;
 x0 = [0; 0];
 
-
-sys = ss(A,B,C,D);
