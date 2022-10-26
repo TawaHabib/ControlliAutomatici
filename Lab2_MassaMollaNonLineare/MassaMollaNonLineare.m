@@ -16,7 +16,6 @@ D = 0;
 sys = ss(A,B,C,D);
 x0 = [0 0]';    
 
-%% TODO
 % SIMULINK
 % ======================================================================
 % Riprodurre con Simulink la stessa simulazione, utilizzando i blocchi
@@ -24,16 +23,18 @@ x0 = [0 0]';
 % e scope (libreria 'sinks' - visualizzazione grafica).
 % E' importante osservare come si possono utilizzare variabili presenti nel
 % Workspace di matlab all'interno dei blocchi simulink.
+
 % Il tempo delle simulazioni e' in millisecondi
-K1 = 0.1;
-x0 = [0 0];
-open('mm_lin')      % Apre un file .mdl, cioe' un file simulink
+open('MassaMollaLinearemdl')      % Apre un file .mdl, cioe' un file simulink
 
-sim('mm_lin')       % Lancia una simulazione del file .mdl
-% pause
+H=[1,0.1];
 
-
-
+for i = 1:length(H)
+    K1=H(i)
+    sim('MassaMollaLinearemdl')       % Lancia una simulazione del file .mdl
+    pause
+end
+%% TODO
 
 % SISTEMI NON LINEARI
 % ======================================================================
