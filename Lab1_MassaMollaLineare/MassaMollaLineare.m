@@ -218,6 +218,7 @@ figure(1)
 subplot(2,1,1)
 plot(T,Y), grid on
 title('Risposta dell''uscita al treno degli impulsi')
+legend('posizione')
 subplot(2,1,2)
 plot(T,X), grid on
 title('Risposta degli stati al treno degli impulsi')
