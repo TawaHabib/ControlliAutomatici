@@ -3,7 +3,7 @@ clc
 close all
 
 %% 1+massamollalineare
-%parametri per il modello MassaMollaLineare.slxc
+%parametri per il modello MassaMollaLineare.slx
 M = 1.0;
 k = 0.33;
 h = 1.1;
@@ -14,7 +14,7 @@ C = [1 0];
 D = 0;
 
 sys = ss(A,B,C,D);
-x0 = [0 0]';    %l'apostrofo fa la trasposta del vettore/matrice a cui è applicato 
+x0 = [0 0]';    
 
 %% TODO
 % SIMULINK
