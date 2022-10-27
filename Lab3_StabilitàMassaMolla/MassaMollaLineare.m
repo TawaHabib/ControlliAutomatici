@@ -15,7 +15,7 @@ D = 0;
 [E,V]=eig(A)
 %CONCLUSIONI
 %Parte reale di tutti gli autovalori negativa==> sistena ass. stabile
-%Autovalori complessi e cognugati ==> Il movimento libero del sistema
+%Autovalori complessi e cognugati ==> Il movimento del sistema
 %ha oscillazioni smorsate dato che i suai autovalori stanno nel secondo 
 %e terzo quadrante
 
