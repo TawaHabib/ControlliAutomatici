@@ -16,22 +16,13 @@ D = 0;
 
 x0 = [0 0]';    
 
-%% SIMULINK
-% ======================================================================
-% Riprodurre con Simulink la stessa simulazione, utilizzando i blocchi
-% step (libreria 'sources') state space (libreria 'continuous')
-% e scope (libreria 'sinks' - visualizzazione grafica).
-% E' importante osservare come si possono utilizzare variabili presenti nel
-% Workspace di matlab all'interno dei blocchi simulink.
-
-% Il tempo delle simulazioni e' in millisecondi
-open('MassaMollaLinearemdl')      % Apre un file .mdl, cioe' un file simulink
+open('MassaMollaLinearemdl')      
 
 H=[1,0.1];
 
 for i = 1:length(H)
     K1=H(i)
-    sim('MassaMollaLinearemdl')       % Lancia una simulazione del file .mdl
+    sim('MassaMollaLinearemdl')       
     pause
 end
 
