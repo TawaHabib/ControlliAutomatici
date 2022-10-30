@@ -13,10 +13,10 @@ B = [0; 1/M];
 C = [1 0];
 D = 0;
 
-sys = ss(A,B,C,D);
+
 x0 = [0 0]';    
 
-% SIMULINK
+%% SIMULINK
 % ======================================================================
 % Riprodurre con Simulink la stessa simulazione, utilizzando i blocchi
 % step (libreria 'sources') state space (libreria 'continuous')
@@ -34,9 +34,8 @@ for i = 1:length(H)
     sim('MassaMollaLinearemdl')       % Lancia una simulazione del file .mdl
     pause
 end
-%% TODO
 
-% SISTEMI NON LINEARI
+%% SISTEMI NON LINEARI
 % ======================================================================
 % Per i sistemi non lineari non possiamo utilizzare la definizione del
 % sistema in forma matriciale. Dobbiamo utilizzare le funzioni che
@@ -63,7 +62,7 @@ sim('mm_nonlineare')       % Lancia una simulazione del file .mdl
 
 
 
-% SOVRAPPOSIZIONE DEGLI EFFETTI
+%% SOVRAPPOSIZIONE DEGLI EFFETTI
 % ======================================================================
 K2 = 0.05;
 open('sovrapposizione_effetti')
