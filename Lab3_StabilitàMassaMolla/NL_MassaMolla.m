@@ -1,41 +1,41 @@
 function [sys,x0,str,ts,simStateCompliance] = NL_MassaMolla(t,x,u,flag,M,k,h,x0)
 
-switch flag
+switch flag,
 
   %%%%%%%%%%%%%%%%%%
   % Initialization %
   %%%%%%%%%%%%%%%%%%
-  case 0
+  case 0,
     [sys,x0,str,ts,simStateCompliance]=mdlInitializeSizes(x0);
 
   %%%%%%%%%%%%%%%
   % Derivatives %
   %%%%%%%%%%%%%%%
-  case 1
+  case 1,
     sys=mdlDerivatives(t,x,u,M,k,h);
 
   %%%%%%%%%%
   % Update %
   %%%%%%%%%%
-  case 2
+  case 2,
     sys=mdlUpdate(t,x,u);
 
   %%%%%%%%%%%
   % Outputs %
   %%%%%%%%%%%
-  case 3
+  case 3,
     sys=mdlOutputs(t,x,u,M,k,h);
 
   %%%%%%%%%%%%%%%%%%%%%%%
   % GetTimeOfNextVarHit %
-  %%%%%%%%%%%%%%%%%%%%%%%
-  case 4
+  %%%%%%%%,%%%%%%%%%%%%%%%
+  case 4,
     sys=mdlGetTimeOfNextVarHit(t,x,u);
 
   %%%%%%%%%%%%%
   % Terminate %
   %%%%%%%%%%%%%
-  case 9
+  case 9,
     sys=mdlTerminate(t,x,u);
 
   %%%%%%%%%%%%%%%%%%%%
@@ -109,7 +109,7 @@ simStateCompliance = 'UnknownSimState';
 function sys=mdlDerivatives(t,x,u,M,k,h)
 
     sys(1)=x(2);    
-    sys(2)=-(k/M)*exp(-x(1))*x(1)-(h/M)*x(2)+u/M;
+    sys(2)=-(k/M)*exp(-x(1))*x(1)-(h/M)*x(2)+(u/M);
 
 
 % end mdlDerivatives
