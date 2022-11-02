@@ -8,14 +8,14 @@ k = 0.33;
 h = 1.1;
 x0 = [0 0]';    
 
-%% 1+massamolla lineare
-%parametri per il modello MassaMollaLineare.slx
-
-
 A = [0 1; -k/M -h/M];
 B = [0; 1/M];
 C = [1 0];
 D = 0;
+%% 1+massamolla lineare
+%parametri per il modello MassaMollaLineare.slx
+
+
 
 
 
@@ -36,10 +36,10 @@ open('mm_nonlineare')
 sim('mm_nonlineare')
 
 
-%% SOVRAPPOSIZIONE DEGLI EFFETTI
+%% 3-Sovrapposizione effetti
 
-
-K2 = 0.05;
+K1=0.1;
+K2=0.05;
 open('sovrapposizione_effetti')
 sim('sovrapposizione_effetti')
 
