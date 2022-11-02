@@ -4,6 +4,10 @@ close all
 
 
 %% 1-studio stabilità dei punti di equilibro del sistema non linerare
+M = 1.0;
+k = 0.33;
+h = 1.1;
+
 
 x=[0.5 0;1 0; 2 0]
 for i=1:3
