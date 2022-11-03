@@ -2,19 +2,22 @@ clear
 clc
 close all
 
-%% 1+massamollalineare
-%parametri per il modello MassaMollaLineare.slx
+%% Parametri per tutti
 M = 1.0;
 k = 0.33;
 h = 1.1;
+x0 = [0 0]';    
 
 A = [0 1; -k/M -h/M];
 B = [0; 1/M];
 C = [1 0];
 D = 0;
+%% 1+massamolla lineare
+%parametri per il modello MassaMollaLineare.slx
 
 
-x0 = [0 0]';    
+
+
 
 open('MassaMollaLinearemdl')      
 
@@ -26,36 +29,17 @@ for i = 1:length(H)
     pause
 end
 
-%% SISTEMI NON LINEARI
-% ======================================================================
-% Per i sistemi non lineari non possiamo utilizzare la definizione del
-% sistema in forma matriciale. Dobbiamo utilizzare le funzioni che
-% descrivono la trasformazione di stato e di uscita.
-% Utilizziamo dunque il blocco S-function per 
-% descrivere un sistema nella forma non-lineare.
+%% 2-risposta scalino (di ampiezza 0.1) massa molla lineare
 
-% DEFINIZIONE DEL SISTEMA NON LINEARE
-% Aprire un nuovo file simulink
-% Inserire una S-function usando il template
-% Salvare il modello matematico così creato per il
-%   sistema non-lineare, con un input ed un output. Abbiamo un modello del
-%   tutto generale che non dipende da precisi valori dei parametri del
-%   sistemi.
-open('mm_nonlineare')      % Apre un file .mdl, cioe' un file simulink
-sim('mm_nonlineare')       % Lancia una simulazione del file .mdl
-% Provare a cambiare K
-% pause
+K1=0.1;
+open('mm_nonlineare')
+sim('mm_nonlineare')
 
 
+%% 3-Sovrapposizione effetti
 
-
-
-
-
-
-%% SOVRAPPOSIZIONE DEGLI EFFETTI
-% ======================================================================
-K2 = 0.05;
+K1=0.1;
+K2=0.05;
 open('sovrapposizione_effetti')
 sim('sovrapposizione_effetti')
 
