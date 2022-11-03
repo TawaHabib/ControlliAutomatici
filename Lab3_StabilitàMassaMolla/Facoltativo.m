@@ -25,4 +25,4 @@ D = 0;
  
 P=lyap(A', diag(ones(2,1),0))
 eig(P)
-%p è definita positiva quindi concludo che il sistema è ass. stabile
+%p esiste ed è definita positiva quindi concludo che il sistema è ass. stabile
