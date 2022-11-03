@@ -154,7 +154,7 @@ rank(obsv(sys))
 % |   ________________             ___________________   |
 % |  |     x1(dot)    |---x1----> |      x2(dot)      |  |
 % |   ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾    |        ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾   |
-% |                      #--->y                          |
+% |                       #--->y                          |
 %  ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾ 
 %ragionamento senza fare calcoli. facendo quindi i calcoli dovremmo
 %ottenere che il rango della matrice osservabilità deve fare 1 e non piu 2:
