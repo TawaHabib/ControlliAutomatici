@@ -6,7 +6,6 @@ close all
 
 k1=1;
 k2=0.5;
-b1=0.5;
 b2=1;
 
 A=[-k1 0;k1 -k2];
@@ -23,10 +22,9 @@ rank(ctrb(sys))
 %Rank(marice di raggiungibilita')<2 --> sistema non completamente
 %raggiungibile, solo la x2 punto lo è
 
-%% 1.2 solo in vene 
 
 %% 1.2.1 continuo
-
+%uc per farlo tendere a 0.5
 uc=(0.5*k2/b2);
 [YC,TC,XC]=step(sys*uc);
 
@@ -35,12 +33,16 @@ uc=(0.5*k2/b2);
 % % tra 0.45-0.55
 % deltaImpulsi=(log((0.55/0.45))/(k2));
 % ampiezzaImpulsi=(exp(k2*deltaImpulsi)*0.45/(5.5*b2));
+% liminf=0.45;
+% limsup=0.55;
 
-% tra 0.49-0.53
+% tra circa 0.49-0.53
 deltaImpulsi=-(log((0.49/0.53))/(k2));
 ampiezzaImpulsi=(exp(k2*deltaImpulsi)/(27*b2));
+liminf=0.490741;
+limsup=0.530801;
 
-numeroImpulsi=100;
+numeroImpulsi=150;
 
 t = linspace(0,deltaImpulsi,10);
 
@@ -58,26 +60,43 @@ for i = 1:numeroImpulsi
 end
 
 %% 1.2.3-Grafici e vincoli
-figure(1)
+
+figure()
+
 subplot(2,1,1)
-plot(T,Y)
-hold on 
-plot([0 T(length(T))],[0.55 0.55],'r')
-hold on 
-plot([0 T(length(T))],[0.45 0.45],'r')
-grid on
-title('Concentrazione nel sangue iniezione ad intervalli regolari')
-legend('farmaco nel sangue','limite')
+    plot(T,Y)
+    hold on 
+    
+    plot([0 T(length(T))],[0.55 0.55],'r')
+    hold on 
+    
+    plot([0 T(length(T))],[limsup limsup],'g')
+    hold on 
+    
+    plot([0 T(length(T))],[0.45 0.45],'r')
+    hold on 
+    
+    plot([0 T(length(T))],[liminf liminf],'g')
+    grid on
+    
+    title('Concentrazione nel sangue iniezione ad intervalli regolari')
+    legend('Concentrazione farmaco nel sangue','limite','intervallo')
 
 subplot(2,1,2)
-plot(TC,YC)
-hold on 
-plot([0 TC(length(TC))],[0.55 0.55],'r')
-hold on 
-plot([0 TC(length(TC))],[0.45 0.45],'r')
-grid on
-title('Concentrazione nel sangue iniezione continua')
-legend('farmaco nel sangue','limite')
+    plot(TC,YC)
+    hold on 
+
+    plot([0 TC(length(TC))],[0.55 0.55],'r')
+    hold on 
+    
+    plot([0 TC(length(TC))],[0.5 0.5],'g')
+    hold on 
+    
+    plot([0 TC(length(TC))],[0.45 0.45],'r')
+    hold on 
+    
+    title('Concentrazione nel sangue iniezione continua')
+    legend('Concentrazione farmaco nel sangue','limite','0.5')
 
 %% pulisco
 
@@ -108,9 +127,19 @@ rank(ctrb(sys))
 %raggiungibile
 
 %% 2.2-determinazione sperimentale
+%tra 0.45-0.55
+% deltaImpulsi=1.8220;
+% ampiezzaImpulsi=0.9381;
+% liminf=0.45;
+% limsup=0.55;
+
+% %circa tra 0.4975-0.52375
 deltaImpulsi=1.8220/2;
 ampiezzaImpulsi=0.9381/2;
-numeroImpulsi=50;
+liminf=0.4975;
+limsup=0.52375;
+
+numeroImpulsi=150;
 
 t = linspace(0,deltaImpulsi,10);
 
@@ -127,17 +156,27 @@ for i = 1:numeroImpulsi
     x = xf(end,:) + xl(end,:);
 end
 
-%%2.3-Grafici e vincoli
+%% 2.3-Grafici e vincoli
 
-figure(1)
+figure()
+
 plot(T,Y)
 hold on 
+
 plot([0 T(length(T))],[0.55 0.55],'r')
 hold on 
+
+plot([0 T(length(T))],[limsup limsup],'g')
+hold on 
+
 plot([0 T(length(T))],[0.45 0.45],'r')
+hold on 
+
+plot([0 T(length(T))],[liminf liminf],'g')
 grid on
+
 title('Concentrazione nel sangue pillole ad intervalli regolari')
-legend('farmaco nel sangue','limite')
+legend('Concentrazione farmaco nel sangue','limite','intervallo')
 
 %% 2.4-Osservabilità del sistema
 
