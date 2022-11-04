@@ -10,7 +10,7 @@ b1=0.5;
 b2=1;
 
 A=[-k1 0;k1 -k2];
-B=[0 b2]';
+B=[0  b2]';
 C=[0 1];
 D=0;
 
@@ -32,7 +32,7 @@ uc=(0.5*k2/b2);
 
 %% 1.2.2-Iniezioni ad intervalli regolari
 
-% tra 0.45-0.55
+% % tra 0.45-0.55
 % deltaImpulsi=(log((0.55/0.45))/(k2));
 % ampiezzaImpulsi=(exp(k2*deltaImpulsi)*0.45/(5.5*b2));
 
@@ -54,7 +54,7 @@ for i = 1:numeroImpulsi
     Y = [Y; yl+yf];
     X = [X; xl+xf];
     T = [T t+deltaImpulsi*(i-1)];
-    x = xf(end,:) + xl(end,:);
+    x = [xf(end,:) + xl(end,:)];
 end
 
 %% 1.2.3-Grafici e vincoli
@@ -108,9 +108,9 @@ rank(ctrb(sys))
 %raggiungibile
 
 %% 2.2-determinazione sperimentale
-deltaImpulsi=1.8220;
-ampiezzaImpulsi=0.9381;
-numeroImpulsi=20;
+deltaImpulsi=1.8220/2;
+ampiezzaImpulsi=0.9381/2;
+numeroImpulsi=50;
 
 t = linspace(0,deltaImpulsi,10);
 
@@ -127,7 +127,7 @@ for i = 1:numeroImpulsi
     x = xf(end,:) + xl(end,:);
 end
 
-%% 2.3-Grafici e vincoli
+%%2.3-Grafici e vincoli
 
 figure(1)
 plot(T,Y)
