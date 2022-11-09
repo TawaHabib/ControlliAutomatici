@@ -30,19 +30,12 @@ uc=(0.5*k2/b2);
 
 %% 1.2.2-Iniezioni ad intervalli regolari
 
-% % tra 0.45-0.55
-% deltaImpulsi=(log((0.55/0.45))/(k2));
-% ampiezzaImpulsi=(exp(k2*deltaImpulsi)*0.45/(5.5*b2));
-% liminf=0.45;
-% limsup=0.55;
-
-% tra circa 0.49-0.53
-deltaImpulsi=-(log((0.49/0.53))/(k2));
-ampiezzaImpulsi=(exp(k2*deltaImpulsi)/(27*b2));
-liminf=0.490741;
-limsup=0.530801;
-
+liminf=0.48;
+limsup=0.53;
 numeroImpulsi=150;
+deltaImpulsi=-(log((liminf/limsup))/(k2));
+ampiezzaImpulsi=(limsup-liminf)/b2;
+
 
 t = linspace(0,deltaImpulsi,10);
 
