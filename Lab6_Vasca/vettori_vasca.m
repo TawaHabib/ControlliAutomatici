@@ -14,18 +14,19 @@ Au=43*1e-6;
 g=9.8;
 Area=0.08;
 hu=-0.095;
+
+%% 1.0-Simulazione modello non linerare
 %si noti che qui 0 significa 9.5cm
 x0=0;
-
-%% 1.0 Simulazione modello non linerare
 open("Vasca_1es.mdl")
 sim("Vasca_1es.mdl")
-%% 2.0 linearizazzione
+%% 2.0-linearizazzione
 bx=0.1;
 [bx,bu,by,dx]=trim("Vasca_NL", bx,[],[],1);
 [A,B,C,D]=linmod('Vasca_NL',bx,bu);
 sys=ss(A,B,C,D);
-%% 3.0 confronto scalino
+
+%% 3.0-Confronto modello linearizzato vs non lineare
 mol=0.01;
 rit=10;
 open("ConfrontoRispostaScalino.mdl")
