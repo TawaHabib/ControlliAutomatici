@@ -2,6 +2,7 @@
 clear
 clc
 close all
+
 % Lookup table attuatore (pompa)
 % Tensioni normalizzate
 Tn_A=0:0.5:5;
@@ -17,29 +18,23 @@ Au=43*1e-6;
 g=9.8;
 Area=0.08;
 hu=-0.095;
-
-%% 1.0-Simulazione modello non linerare
-%si noti che qui 0 significa 9.5cm
-x0=0;
-open("Vasca_1es.mdl")
-sim("Vasca_1es.mdl")
-%% 2.0-linearizazzione
 bx=0.1;
+%% 0.0-linearizazzione
+x0=0;
 [bx,bu,by,dx]=trim('Vasca_NL', bx,[],[],1);
 [A,B,C,D]=linmod('Vasca_NL',bx,bu);
 sys=ss(A,B,C,D);
+%Funzione di trasferimento
+G=tf(sys)
 
-%% 3.0-Confronto modello linearizzato vs non lineare
-mol=0.01;
-rit=10;
-open("ConfrontoRispostaScalino.mdl")
-sim("ConfrontoRispostaScalino.mdl")
-pause
-mol=0.1;
-sim("ConfrontoRispostaScalino.mdl")
-%nel primo caso e meglio del secondo perche siamo vicini al punto di
-%equilibrio
-
-%% 4 traccio bode e verifico
-bode(sys)
-tf(sys)
+%% 1
+% sistema ass. stabile per ogni k<0.35
+%% 2
+K=0.33
+%% 3 
+figure
+bode(G)
+L=-0.0077*K/();
+pole(L)
+figure
+bode(L);
