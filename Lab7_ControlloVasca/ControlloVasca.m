@@ -27,20 +27,36 @@ sys=ss(A,B,C,D);
 %Funzione di trasferimento
 G=tf(sys);
 
-%% 1
+%% 1-stabilita
 Kmax=0.0027/0.0077;
 % sistema ass. stabile per ogni k<0.35
-%% 2
-BandaPAssanteG=bandwidth(G,-3)
+% sistema instabile per k>0.35
+%% 2-Calcolo K
 
-K=0.33
-%% 3 
-bandwidth(G,-3)
+K=((-153*0.0027)+0.0027)/0.0077;
 
-L=feedback(K*G,1)
+%% 3-Verifica dei requisiti mendiante diagrammi e calcolando la frequenza di taglio
+
 figure
 bode(G)
 bandwidth(G,-3)
+
+F=feedback(K*G,1);
+
 figure
-bode(L);
-bandwidth(L)
+bode(F)
+bandwidth(F,-3);
+
+%% 4-verifica stabilità del sistema in anello chiuso
+L=K*G;
+figure
+nyquist(L)
+%usando nyquist risulta ass. stabile in quato N*=0;P=0;N=P-->ass.stabile
+figure
+bode(L)
+[Gm,Pm,Wcg,Wcp] = margin(L) ;
+%usando il criterio di bode possiamo dire che il sys è ass.stabile
+%% 7
+y0=0.1;
+rit=200;
+mol=0.08;
