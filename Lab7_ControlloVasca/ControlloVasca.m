@@ -25,16 +25,22 @@ x0=0;
 [A,B,C,D]=linmod('Vasca_NL',bx,bu);
 sys=ss(A,B,C,D);
 %Funzione di trasferimento
-G=tf(sys)
+G=tf(sys);
 
 %% 1
+Kmax=0.0027/0.0077;
 % sistema ass. stabile per ogni k<0.35
 %% 2
+BandaPAssanteG=bandwidth(G,-3)
+
 K=0.33
 %% 3 
+bandwidth(G,-3)
+
+L=feedback(K*G,1)
 figure
 bode(G)
-L=-0.0077*K/();
-pole(L)
+bandwidth(G,-3)
 figure
 bode(L);
+bandwidth(L)
