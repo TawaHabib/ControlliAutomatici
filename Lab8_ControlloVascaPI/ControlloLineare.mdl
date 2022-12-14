@@ -17,7 +17,6 @@ __MWOPC_PART_BEGIN__ /[Content_Types].xml
   <Override ContentType="application/vnd.mathworks.simulink.configSetInfo+xml" PartName="/simulink/configSetInfo.xml"/>
   <Override ContentType="application/vnd.mathworks.simulink.graphicalInterface+xml" PartName="/simulink/graphicalInterface.xml"/>
   <Override ContentType="application/vnd.mathworks.simulink.mf0+xml" PartName="/simulink/modelDictionary.xml"/>
-  <Override ContentType="application/vnd.mathworks.simulink.pluginParameters+xml" PartName="/simulink/plugins/LogicAnalyzerPlugin.xml"/>
   <Override ContentType="application/vnd.mathworks.simulink.ScheduleCore+xml" PartName="/simulink/ScheduleCore.xml"/>
   <Override ContentType="application/vnd.mathworks.simulink.ScheduleEditor+xml" PartName="/simulink/ScheduleEditor.xml"/>
   <Override ContentType="application/vnd.mathworks.simulink.blockDiagram+xml" PartName="/simulink/windowsInfo.xml"/>
@@ -42,8 +41,8 @@ __MWOPC_PART_BEGIN__ /metadata/coreProperties.xml
   <cp:category>model</cp:category>
   <dcterms:created xsi:type="dcterms:W3CDTF">2022-12-14T10:33:11Z</dcterms:created>
   <cp:lastModifiedBy>cl481357</cp:lastModifiedBy>
-  <dcterms:modified xsi:type="dcterms:W3CDTF">2022-12-14T10:49:01Z</dcterms:modified>
-  <cp:revision>1.14</cp:revision>
+  <dcterms:modified xsi:type="dcterms:W3CDTF">2022-12-14T12:02:26Z</dcterms:modified>
+  <cp:revision>1.15</cp:revision>
   <cp:version>R2022a</cp:version>
 </cp:coreProperties>
 
@@ -75,7 +74,6 @@ __MWOPC_PART_BEGIN__ /metadata/mwcorePropertiesReleaseInfo.xml
 __MWOPC_PART_BEGIN__ /simulink/_rels/blockdiagram.xml.rels
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
-  <Relationship Id="LogicAnalyzerPlugin" Target="plugins/LogicAnalyzerPlugin.xml" Type="http://schemas.mathworks.com/simulinkModel/2014/relationships/pluginParameters"/>
   <Relationship Id="ScheduleCore" Target="ScheduleCore.xml" Type="http://schemas.mathworks.com/simulink/2013/relationships/ScheduleCore"/>
   <Relationship Id="ScheduleEditor" Target="ScheduleEditor.xml" Type="http://schemas.mathworks.com/simulink/2013/relationships/ScheduleEditor"/>
   <Relationship Id="graphicalInterface" Target="graphicalInterface.xml" Type="http://schemas.mathworks.com/simulinkModel/2014/relationships/graphicalInterface"/>
@@ -110,8 +108,8 @@ __MWOPC_PART_BEGIN__ /simulink/blockdiagram.xml
     <ConfigManagerSettings>
       <P Name="ModifiedByFormat">%&lt;Auto&gt;</P>
       <P Name="ModifiedDateFormat">%&lt;Auto&gt;</P>
-      <P Name="RTWModifiedTimeStamp">592918725</P>
-      <P Name="ModelVersionFormat">%&lt;AutoIncrement:1.14&gt;</P>
+      <P Name="RTWModifiedTimeStamp">592923735</P>
+      <P Name="ModelVersionFormat">%&lt;AutoIncrement:1.15&gt;</P>
     </ConfigManagerSettings>
     <SimulationSettings>
       <P Name="SimulationMode">normal</P>
@@ -937,40 +935,34 @@ __MWOPC_PART_BEGIN__ /simulink/graphicalInterface.xml
 __MWOPC_PART_BEGIN__ /simulink/modelDictionary.xml
 <?xml version="1.0" encoding="UTF-8"?>
 <MF0 version="1.1" defaultPackage="slid" packageUris="http://schema.mathworks.com/mf0/slid/R2020b_20191110">
-  <System type="System" uuid="44315975-2dba-4418-9454-35efde76f907">
-    <Interface type="Interface" uuid="12f290cc-da7c-48ff-95a1-e9ed1436c988"/>
+  <System type="System" uuid="fa61c992-4e53-4924-b8e5-06830e22d700">
+    <Interface type="Interface" uuid="eac6ab2d-6a8e-44ca-8713-a0bccf7ba0a1"/>
   </System>
 </MF0>
-__MWOPC_PART_BEGIN__ /simulink/plugins/LogicAnalyzerPlugin.xml
-<?xml version="1.0" encoding="utf-8"?>
-<LogicAnalyzerPlugin>
-  <P Name="LogicAnalyzerSignalOrdering">80f8ccf0-be07-4d0c-8f95-f5254a201713</P>
-</LogicAnalyzerPlugin>
-
 __MWOPC_PART_BEGIN__ /simulink/ScheduleCore.xml
 <?xml version="1.0" encoding="UTF-8"?>
 <sltp_graph version="1.1" packageUris="http://schema.mathworks.com/mf0/sltp_mm/R2021b_202106150630">
-  <sltp.mm.core.Context type="sltp.mm.core.Context" uuid="ac042055-3842-4ebe-98df-6a3cd0c7bfeb">
+  <sltp.mm.core.Context type="sltp.mm.core.Context" uuid="4dbd6ca3-cecb-410e-88d5-cd4044df400f">
     <priorityDirection>HighNumberLast</priorityDirection>
     <editorState type="sltp.mm.core.EditorState" uuid="da18c2e7-d403-4aa1-bfbf-0d58299bc84e">
       <isSynchronized>true</isSynchronized>
       <panelState type="sltp.mm.core.EditorPanelState" uuid="9620908d-0d20-40e2-9967-a5144c915792"/>
     </editorState>
-    <rootTask type="sltp.mm.core.Task" uuid="62336df0-5fbe-4950-9834-7745127764b4">
-      <context type="sltp.mm.core.Context" uuid="ac042055-3842-4ebe-98df-6a3cd0c7bfeb"/>
+    <rootTask type="sltp.mm.core.Task" uuid="b0d35807-e839-434d-b271-797b51f87700">
+      <context type="sltp.mm.core.Context" uuid="4dbd6ca3-cecb-410e-88d5-cd4044df400f"/>
       <explicit>false</explicit>
       <name>Default</name>
       <priority>-2147483648</priority>
-      <subgraph type="sltp.mm.core.Graph" uuid="b32cd09d-bc76-401d-b525-25d849fdd169">
-        <tasks type="sltp.mm.core.Task" uuid="47f27086-39c4-4350-9552-ae33b415a8a3">
+      <subgraph type="sltp.mm.core.Graph" uuid="ab7794ab-6b2d-4cf6-9913-74d4ee4afea8">
+        <tasks type="sltp.mm.core.Task" uuid="398769eb-1a83-4404-a085-420cb237c3a6">
           <baseTask>true</baseTask>
-          <context type="sltp.mm.core.Context" uuid="ac042055-3842-4ebe-98df-6a3cd0c7bfeb"/>
+          <context type="sltp.mm.core.Context" uuid="4dbd6ca3-cecb-410e-88d5-cd4044df400f"/>
           <explicit>false</explicit>
           <id>1</id>
           <isTimed>true</isTimed>
           <name>Cont</name>
           <priority>40</priority>
-          <rates type="sltp.mm.core.Rate" uuid="78b754bc-6ec4-4368-92ca-7b7a321f333a">
+          <rates type="sltp.mm.core.Rate" uuid="21b24e6d-f053-4351-8c57-48bca81caa6a">
             <annotation>Cont</annotation>
             <color>255</color>
             <hasBlocks>true</hasBlocks>
@@ -980,7 +972,7 @@ __MWOPC_PART_BEGIN__ /simulink/ScheduleCore.xml
             </rateSpec>
             <sti>0</sti>
           </rates>
-          <rates type="sltp.mm.core.Rate" uuid="fcff22bc-52e3-44cb-8a47-804c0d582e7e">
+          <rates type="sltp.mm.core.Rate" uuid="0cdbc596-a7f1-4085-80a2-a29a1cf2db9b">
             <annotation>FiM</annotation>
             <color>-2139062017</color>
             <hasBlocks>true</hasBlocks>
@@ -990,7 +982,7 @@ __MWOPC_PART_BEGIN__ /simulink/ScheduleCore.xml
             </rateSpec>
             <sti>1</sti>
           </rates>
-          <rates type="sltp.mm.core.Rate" uuid="5715417d-f299-4a36-8f22-a167e9cfc172">
+          <rates type="sltp.mm.core.Rate" uuid="849d37be-b2f1-46fd-87ce-742c75a0bc4d">
             <annotation>D1</annotation>
             <color>-436207361</color>
             <hasBlocks>true</hasBlocks>
@@ -1246,9 +1238,9 @@ __MWOPC_PART_BEGIN__ /simulink/systems/system_root.xml
   <P Name="Open">on</P>
   <P Name="SetExecutionDomain">off</P>
   <P Name="ExecutionDomainType">Deduce</P>
-  <P Name="ZoomFactor">66</P>
+  <P Name="ZoomFactor">150</P>
   <P Name="ReportName">simulink-default.rpt</P>
-  <P Name="SIDHighWatermark">64</P>
+  <P Name="SIDHighWatermark">65</P>
   <P Name="SimulinkSubDomain">Simulink</P>
   <Block BlockType="Lookup_n-D" Name="1-D Lookup&#xA;Table" SID="62">
     <P Name="Ports">[1, 1]</P>
@@ -1315,11 +1307,6 @@ __MWOPC_PART_BEGIN__ /simulink/systems/system_root.xml
     <P Name="BlockRotation">270</P>
     <P Name="NameLocation">right</P>
     <P Name="Value">bu</P>
-  </Block>
-  <Block BlockType="Gain" Name="Gain" SID="34">
-    <P Name="Position">[460, 185, 490, 215]</P>
-    <P Name="ZOrder">42</P>
-    <P Name="Gain">K</P>
   </Block>
   <Block BlockType="Gain" Name="Gain1" SID="46">
     <P Name="Position">[460, 435, 490, 465]</P>
@@ -1398,6 +1385,11 @@ __MWOPC_PART_BEGIN__ /simulink/systems/system_root.xml
     <P Name="ZOrder">55</P>
     <P Name="Inputs">|+-</P>
   </Block>
+  <Block BlockType="TransferFcn" Name="Transfer Fcn" SID="65">
+    <P Name="Position">[430, 182, 490, 218]</P>
+    <P Name="ZOrder">71</P>
+    <P Name="Denominator">[0 1]</P>
+  </Block>
   <Block BlockType="SubSystem" Name="Vasca Linearizzata" SID="15">
     <P Name="Ports">[1, 1]</P>
     <P Name="Position">[680, 160, 845, 240]</P>
@@ -1471,9 +1463,9 @@ __MWOPC_PART_BEGIN__ /simulink/systems/system_root.xml
     <P Name="Dst">41#in:1</P>
   </Line>
   <Line>
-    <P Name="ZOrder">63</P>
+    <P Name="ZOrder">165</P>
     <P Name="Src">41#out:1</P>
-    <P Name="Dst">34#in:1</P>
+    <P Name="Dst">65#in:1</P>
   </Line>
   <Line>
     <P Name="ZOrder">143</P>
@@ -1523,8 +1515,8 @@ __MWOPC_PART_BEGIN__ /simulink/systems/system_root.xml
     </Branch>
   </Line>
   <Line>
-    <P Name="ZOrder">88</P>
-    <P Name="Src">34#out:1</P>
+    <P Name="ZOrder">166</P>
+    <P Name="Src">65#out:1</P>
     <P Name="Dst">50#in:1</P>
   </Line>
   <Line>
@@ -1579,9 +1571,9 @@ __MWOPC_PART_BEGIN__ /simulink/windowsInfo.xml
           <P Name="ViewObjType" Class="char">SimulinkTopLevel</P>
           <P Name="LoadSaveID" Class="char">0</P>
           <P Name="Extents" Class="double">[1324.0, 572.0]</P>
-          <P Name="ZoomFactor" Class="double">0.66460224821939351</P>
-          <P Name="Offset" Class="double">[-270.166181075992, -103.49477669931815]</P>
-          <P Name="SceneRectInView" Class="double">[-270.166181075992, -103.49477669931815, 1992.1690056680804, 860.66515954844567]</P>
+          <P Name="ZoomFactor" Class="double">1.5</P>
+          <P Name="Offset" Class="double">[157.91403916776363, 46.153946356004695]</P>
+          <P Name="SceneRectInView" Class="double">[157.91403916776363, 46.153946356004695, 882.66666666666663, 381.33333333333331]</P>
         </Object>
         <Object ObjectID="6">
           <P Name="IsActive" Class="logical">0</P>
