@@ -27,13 +27,10 @@ sys=ss(A,B,C,D);
 %Funzione di trasferimento
 G=tf(sys);
 
-%% 1-stabilita
-Kmax=0.0027/0.0077;
-% sistema ass. stabile per ogni k<0.35
-% sistema instabile per k>0.35
-%% 2-Calcolo K
+%% 1-Calcolo Kj
 
-K=((-153*0.0027)+0.0027)/0.0077;
+KI=((-153*0.0027^2))/0.0077
+KP=KI/0.0027
 
 %% 3-Verifica dei requisiti mendiante diagrammi e calcolando la frequenza di taglio
 
