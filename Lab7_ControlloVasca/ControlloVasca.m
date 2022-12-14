@@ -39,24 +39,42 @@ K=((-153*0.0027)+0.0027)/0.0077;
 
 figure
 bode(G)
-bandwidth(G,-3)
+title("Bode G")
+
+BandaPassanteG=bandwidth(G,-3)
 
 F=feedback(K*G,1);
 
 figure
 bode(F)
-bandwidth(F,-3);
+title("Bode F")
+
+BandaPassanteF=bandwidth(F,-3)
 
 %% 4-verifica stabilità del sistema in anello chiuso
 L=K*G;
 figure
 nyquist(L)
+title("Nyquist L")
+
 %usando nyquist risulta ass. stabile in quato N*=0;P=0;N=P-->ass.stabile
 figure
 bode(L)
-[Gm,Pm,Wcg,Wcp] = margin(L) ;
+title("Bode L")
+
+figure
+bode(F)
+title("Bode F")
+
+[Gm,Pm,Wcg,Wcp] = margin(L) 
+
 %usando il criterio di bode possiamo dire che il sys è ass.stabile
 %% 7
 y0=0.1;
 rit=200;
 mol=0.08;
+open("ControlloLineare.mdl")
+sim("ControlloLineare.mdl")
+%a==>perche il sistema raggiunge il sp
+ta1=-log(0.01*1)/Wcp
+%b==>11.18
