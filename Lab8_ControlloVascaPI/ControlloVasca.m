@@ -27,51 +27,36 @@ sys=ss(A,B,C,D);
 %Funzione di trasferimento
 G=tf(sys);
 
-%% 1-Calcolo Kj
+%% 1-Calcolo KI e KP
 
 KI=((-153*0.0027^2))/0.0077
 KP=KI/0.0027
-
-%% 3-Verifica dei requisiti mendiante diagrammi e calcolando la frequenza di taglio
-
-figure
-bode(G)
-title("Bode G")
-
-BandaPassanteG=bandwidth(G,-3)
-
-F=feedback(K*G,1);
-
-figure
-bode(F)
-title("Bode F")
-
-BandaPassanteF=bandwidth(F,-3)
-
-%% 4-verifica stabilità del sistema in anello chiuso
-L=K*G;
-figure
-nyquist(L)
-title("Nyquist L")
-
-%usando nyquist risulta ass. stabile in quato N*=0;P=0;N=P-->ass.stabile
-figure
-bode(L)
-title("Bode L")
-
-figure
-bode(F)
-title("Bode F")
-
+num=[KP KI];
+denum=[1 0];
+R=tf(num,denum);
+L=minreal(R*G);
+%verifico correttezza
 [Gm,Pm,Wcg,Wcp] = margin(L) 
+F=minreal(feedback(R*G,1))
 
-%usando il criterio di bode possiamo dire che il sys è ass.stabile
-%% 7
+%% 3-simulazione con bu
 y0=0.1;
 rit=200;
 mol=0.08;
 open("ControlloLineare.mdl")
 sim("ControlloLineare.mdl")
-%a==>perche il sistema raggiunge il sp
+%a)l'errore a transitorio esaurito è nullo in quanto ce lo garantisce
+%l'integratore per segnali a scalono;
+%calcolando il limite per s->0 di s*F*(e^-200s)*0.08/s=0.08 e applicando la
+%sovrapposizione degli effetti (partiamo da dy non da zero) quindi
+%0.08+0.1=0.18
+%b)tempo ass all' 1%
 ta1=-log(0.01*1)/Wcp
-%b==>11.18
+%% 4-Simuulazione senza bu
+rit=700
+open("ControlloVascaPI_no_du.mdl")
+sim("ControlloVascaPI_no_du.mdl")
+%errore non è inizialmente a zero in quanto la vasca non riceve in ingresso
+%l'equilibrio (0.1) comunque possiamo farlo per la natura della parte
+%integrativa. inizialmente il livello secnde bruscamente ma poi quando
+%passa abbastanza tempo entra in gioco l'integrale che sistema le cose
