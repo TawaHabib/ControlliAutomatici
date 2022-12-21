@@ -20,7 +20,7 @@ Area=0.08;
 hu=-0.095;
 bx=0.1;
 %% 0.0-linearizazzione
-x0=0;
+x0=0.1;
 [bx,bu,by,dx]=trim('Vasca_NL', bx,[],[],1);
 [A,B,C,D]=linmod('Vasca_NL',bx,bu);
 sys=ss(A,B,C,D);
@@ -33,29 +33,22 @@ KI=((-153*0.0027^2))/0.0077
 KP=KI/0.0027
 num=[KP KI];
 denum=[1 0];
-R=tf(num,denum);
-L=minreal(R*G);
+R=tf(num,denum)
+L=minreal(R*G)
 %verifico correttezza
 [Gm,Pm,Wcg,Wcp] = margin(L) 
 F=minreal(feedback(R*G,1))
 
 %% 3-simulazione con bu
+tsign=500
 y0=0.1;
-rit=200;
-mol=0.08;
-open("ControlloLineare.mdl")
-sim("ControlloLineare.mdl")
-%a)l'errore a transitorio esaurito è nullo in quanto ce lo garantisce
-%l'integratore per segnali a scalono;
-%calcolando il limite per s->0 di s*F*(e^-200s)*0.08/s=0.08 e applicando la
-%sovrapposizione degli effetti (partiamo da dy non da zero) quindi
-%0.08+0.1=0.18
-%b)tempo ass all' 1%
-ta1=-log(0.01*1)/Wcp
-%% 4-Simuulazione senza bu
-rit=700
-open("ControlloVascaPI_no_du.mdl")
-sim("ControlloVascaPI_no_du.mdl")
+mol1=0.07;
+mol2=0.16
+rit1=2*tsign
+rit2=4*tsign
+%%
+open("VascaNonLineareRealizazzioneIndustriale.mdl")
+sim("VascaNonLineareRealizazzioneIndustriale.mdl")
 %errore non è inizialmente a zero in quanto la vasca non riceve in ingresso
 %l'equilibrio (0.1) comunque possiamo farlo per la natura della parte
 %integrativa. inizialmente il livello secnde bruscamente ma poi quando

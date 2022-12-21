@@ -41,8 +41,8 @@ __MWOPC_PART_BEGIN__ /metadata/coreProperties.xml
   <cp:category>model</cp:category>
   <dcterms:created xsi:type="dcterms:W3CDTF">2022-12-14T10:27:15Z</dcterms:created>
   <cp:lastModifiedBy>cl481357</cp:lastModifiedBy>
-  <dcterms:modified xsi:type="dcterms:W3CDTF">2022-12-14T10:28:13Z</dcterms:modified>
-  <cp:revision>2.2</cp:revision>
+  <dcterms:modified xsi:type="dcterms:W3CDTF">2022-12-21T10:22:42Z</dcterms:modified>
+  <cp:revision>2.3</cp:revision>
   <cp:version>R2022a</cp:version>
 </cp:coreProperties>
 
@@ -108,8 +108,8 @@ __MWOPC_PART_BEGIN__ /simulink/blockdiagram.xml
     <ConfigManagerSettings>
       <P Name="ModifiedByFormat">%&lt;Auto&gt;</P>
       <P Name="ModifiedDateFormat">%&lt;Auto&gt;</P>
-      <P Name="RTWModifiedTimeStamp">592918078</P>
-      <P Name="ModelVersionFormat">%&lt;AutoIncrement:2.2&gt;</P>
+      <P Name="RTWModifiedTimeStamp">593522431</P>
+      <P Name="ModelVersionFormat">%&lt;AutoIncrement:2.3&gt;</P>
     </ConfigManagerSettings>
     <SimulationSettings>
       <P Name="SimulationMode">normal</P>
@@ -917,23 +917,53 @@ __MWOPC_PART_BEGIN__ /simulink/graphicalInterface.xml
 __MWOPC_PART_BEGIN__ /simulink/modelDictionary.xml
 <?xml version="1.0" encoding="UTF-8"?>
 <MF0 version="1.1" defaultPackage="slid" packageUris="http://schema.mathworks.com/mf0/slid/R2020b_20191110">
-  <System type="System" uuid="f4a80f8a-0ad5-4e84-bfd9-dbe421f2a05a">
-    <Interface type="Interface" uuid="8ed7f552-a054-48b6-b6b4-8c48cb5093e6"/>
+  <System type="System" uuid="6bbb881b-bbfe-494c-b927-b932cf31cedf">
+    <Interface type="Interface" uuid="b56a29b3-6879-4a8a-aeac-3e0dce12771d"/>
   </System>
 </MF0>
 __MWOPC_PART_BEGIN__ /simulink/ScheduleCore.xml
 <?xml version="1.0" encoding="UTF-8"?>
 <sltp_graph version="1.1" packageUris="http://schema.mathworks.com/mf0/sltp_mm/R2021b_202106150630">
-  <sltp.mm.core.Context type="sltp.mm.core.Context" uuid="1a4eddd3-4702-4e89-acda-1269e7784bfe">
+  <sltp.mm.core.Context type="sltp.mm.core.Context" uuid="6829ecb6-f967-4ad0-8816-c2673f8f32d2">
+    <globalData type="sltp.mm.core.GlobalData" uuid="39a21b8f-2a79-4469-ac79-7d75ffc271a2">
+      <dataName>portIn1</dataName>
+      <type>RootInport</type>
+    </globalData>
+    <globalData type="sltp.mm.core.GlobalData" uuid="e62e3ee2-8051-4969-adb9-22cddf465a50">
+      <dataName>portOut1</dataName>
+      <type>RootOutport</type>
+    </globalData>
+    <priorityDirection>HighNumberLast</priorityDirection>
     <editorState type="sltp.mm.core.EditorState" uuid="af4059c2-e149-4f09-a935-c7b3637b503f">
+      <isSynchronized>true</isSynchronized>
       <panelState type="sltp.mm.core.EditorPanelState" uuid="9c16684e-3e5e-4cf4-8731-d2dd50b514e8"/>
     </editorState>
-    <rootTask type="sltp.mm.core.Task" uuid="bba02c2d-f7cf-4cd6-9152-d43af3d08792">
-      <context type="sltp.mm.core.Context" uuid="1a4eddd3-4702-4e89-acda-1269e7784bfe"/>
+    <rootTask type="sltp.mm.core.Task" uuid="e6133599-c383-4449-812f-943f8c4303d1">
+      <context type="sltp.mm.core.Context" uuid="6829ecb6-f967-4ad0-8816-c2673f8f32d2"/>
       <explicit>false</explicit>
       <name>Default</name>
       <priority>-2147483648</priority>
-      <subgraph type="sltp.mm.core.Graph" uuid="6b0ad67a-7ef7-4cec-a163-cc6cac6bd5b2"/>
+      <subgraph type="sltp.mm.core.Graph" uuid="44504ec0-5f03-4df4-9673-94856e9d5b2a">
+        <tasks type="sltp.mm.core.Task" uuid="83d59ce1-a0a7-4599-8a7c-961cfa666018">
+          <baseTask>true</baseTask>
+          <context type="sltp.mm.core.Context" uuid="6829ecb6-f967-4ad0-8816-c2673f8f32d2"/>
+          <explicit>false</explicit>
+          <id>1</id>
+          <isTimed>true</isTimed>
+          <name>Cont</name>
+          <priority>40</priority>
+          <rates type="sltp.mm.core.Rate" uuid="24676f1e-d166-4131-85ac-119dcf84a0e0">
+            <annotation>Cont</annotation>
+            <color>255</color>
+            <hasBlocks>true</hasBlocks>
+            <identifier>Continuous00</identifier>
+            <rateSpec type="sltp.mm.core.RateSpec">
+              <period>0.0</period>
+            </rateSpec>
+            <sti>0</sti>
+          </rates>
+        </tasks>
+      </subgraph>
     </rootTask>
   </sltp.mm.core.Context>
 </sltp_graph>
@@ -941,13 +971,49 @@ __MWOPC_PART_BEGIN__ /simulink/ScheduleEditor.xml
 <?xml version="1.0" encoding="UTF-8"?>
 <sltp_editor version="1.1" packageUris="http://schema.mathworks.com/mf0/DiagramEditor/R2019a_20181107 http://schema.mathworks.com/mf0/SltpSyntax/R2022a_202109161050">
   <diagram.editor.model.Diagram type="diagram.editor.model.Diagram" uuid="2e68bf2a-a29a-478d-ae95-5908fb3deb72">
+    <entities type="diagram.editor.model.Entity" uuid="c533b7f2-830f-456f-a53c-383eea1145dd">
+      <position>0,0</position>
+      <size>0,0,0,0</size>
+      <syntaxElement type="sltp.mm.syntax.Node" uuid="59054117-4f15-448b-bc91-b9e5f6e764f5"/>
+      <title>Cont</title>
+      <type>base</type>
+      <subDiagram type="diagram.editor.model.Diagram" uuid="04e6ee2d-a08f-4fd2-80f8-9c8ea869f651">
+        <position>0,0</position>
+        <syntaxElement type="sltp.mm.syntax.Graph" uuid="8f2fc22b-c61d-4fa0-b284-4c305cd894cb"/>
+        <title>Cont</title>
+        <type>graph.Graph</type>
+      </subDiagram>
+    </entities>
     <syntaxElement type="sltp.mm.syntax.Graph" uuid="8ff0a231-09d2-4d65-8c57-61ed23319365"/>
     <title>Default</title>
     <type>graph.Graph</type>
   </diagram.editor.model.Diagram>
   <sltp.mm.syntax.Context type="sltp.mm.syntax.Context" uuid="77bfc93b-ee6b-49cb-82b0-73ed9e7e0d4c">
+    <globalData type="sltp.mm.syntax.GlobalData" uuid="fc0b66a8-f4f1-4f38-98c0-c10f66e86625">
+      <dataName>portIn1</dataName>
+      <type>RootInport</type>
+    </globalData>
+    <globalData type="sltp.mm.syntax.GlobalData" uuid="440007be-8915-4bb4-a9e9-d6fef657c3b8">
+      <dataName>portOut1</dataName>
+      <type>RootOutport</type>
+    </globalData>
     <rootGraph type="sltp.mm.syntax.Graph" uuid="8ff0a231-09d2-4d65-8c57-61ed23319365">
-      <priorityDirection>HighNumberFirst</priorityDirection>
+      <children type="sltp.mm.syntax.Node" uuid="59054117-4f15-448b-bc91-b9e5f6e764f5">
+        <priority>40</priority>
+        <rates type="sltp.mm.syntax.RateData">
+          <color>#000000</color>
+          <hasBlocks>true</hasBlocks>
+          <rate>0</rate>
+          <title>Cont</title>
+        </rates>
+        <title>Cont</title>
+        <type>base</type>
+        <diagramElement type="diagram.editor.model.Entity" uuid="c533b7f2-830f-456f-a53c-383eea1145dd"/>
+        <subgraph type="sltp.mm.syntax.Graph" uuid="8f2fc22b-c61d-4fa0-b284-4c305cd894cb">
+          <title>Cont</title>
+          <diagramElement type="diagram.editor.model.Diagram" uuid="04e6ee2d-a08f-4fd2-80f8-9c8ea869f651"/>
+        </subgraph>
+      </children>
       <title>Default</title>
       <diagramElement type="diagram.editor.model.Diagram" uuid="2e68bf2a-a29a-478d-ae95-5908fb3deb72"/>
     </rootGraph>
@@ -1085,7 +1151,7 @@ __MWOPC_PART_BEGIN__ /simulink/windowsInfo.xml
       <Array PropName="PersistedApps" Type="Cell" Dimension="0*1"/>
       <P Name="WindowUuid" Class="char">a96fc7aa-11d9-479e-8d02-a70be0aebc6a</P>
     </Object>
-    <P Name="BDUuid" Class="char">1a6f9635-be81-4c3a-bb7b-ae30d4e91f62</P>
+    <P Name="BDUuid" Class="char">f6a1900f-5830-4fe5-a240-9c6e33e16029</P>
   </Object>
 </WindowsInfo>
 
