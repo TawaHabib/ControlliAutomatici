@@ -27,19 +27,19 @@ sys=ss(A,B,C,D);
 %Funzione di trasferimento
 G=tf(sys);
 
-%% 1-Calcolo KI e KP
+%%
 
 KI=((-153*0.0027^2))/0.0077
 KP=KI/0.0027
 num=[KP KI];
-denum=[1 0];
+denum=[1 0]
 R=tf(num,denum)
 L=minreal(R*G)
 %verifico correttezza
 [Gm,Pm,Wcg,Wcp] = margin(L) 
 F=minreal(feedback(R*G,1))
 
-%% 3-simulazione con bu
+%% 
 tsign=500
 y0=0.1;
 mol1=0.07;
