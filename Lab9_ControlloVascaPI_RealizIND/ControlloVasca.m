@@ -25,12 +25,12 @@ x0=0.1;
 [A,B,C,D]=linmod('Vasca_NL',bx,bu);
 sys=ss(A,B,C,D);
 %Funzione di trasferimento
-G=tf(sys);
+G=tf(sys)
 
 %%
 
-KI=((-153*0.0027^2))/0.0077
-KP=KI/0.0027
+KI=((-153*0.0027)*abs(pole(G)))/0.007729
+KP=KI/abs(pole(G))
 num=[KP KI];
 denum=[1 0]
 R=tf(num,denum)
